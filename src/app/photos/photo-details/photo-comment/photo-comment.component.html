@@ -1,0 +1,44 @@
+<div *ngIf="(comments$ | async) as comments">
+  <div *ngIf="user">
+    <form [formGroup]="commentForm" (submit)="save()" class="mb-3">
+      <div class="input-group">
+        <textarea formControlName="comment" class="form-control" placeholder="Type your comment..."></textarea>
+        <div class="input-group-append">
+          <button [disabled]="commentForm.invalid" class="btn btn-primary pull-left" type="submit">Publish</button>
+        </div>
+      </div>
+      <ap-vmessage
+        text="Maximun size allowed is 255"
+        *ngIf="commentForm.get('comment').errors?.maxlength">
+      </ap-vmessage>
+      <ap-vmessage
+        text="Type to comment"
+        *ngIf="commentForm.get('comment').errors?.required">
+      </ap-vmessage>
+    </form>
+  </div>
+
+  <ul class="list-unstyled comment-list" *ngIf="comments.length; else noComments">
+    <li *ngFor="let comment of comments">
+      <a class="text-dark font-weight-bold mr-1" [routerLink]="['/user', comment.user.id]">
+        <i class="fa fa-user-circle"></i>
+        <a class="ml-2 mr-2 text-dark" [routerLink]="['/photos/user/' + comment.user.id]">{{ comment.user.username }}</a>
+      </a>
+      <em>
+        <small>{{ comment.posted | date:'dd-MM-yyyy HH:mm' }}</small>
+      </em>
+      <div class="break-word">
+        <p class="text-break mb-2">
+          {{ comment.comment }}
+        </p>
+      </div>
+    </li>
+  </ul>
+
+  <ng-template #noComments>
+    <div>
+      <p class="text-center">No comments yet</p>
+    </div>
+  </ng-template>
+  </div>
+<div>

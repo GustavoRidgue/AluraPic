@@ -1,0 +1,93 @@
+<div class="bg-white border" *ngIf="(photo$ | async) as photo">
+  <div class="container-fluid mb-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-12 pr-5 pl-5">
+        <div>
+          <i class="fa fa-user-circle"></i>
+          <a class="ml-2 mr-2 break-word text-dark" [routerLink]="['/photos/user/' + photo?.user.id]">{{photo?.user.username}}</a>
+        </div>
+        <div>
+          <p class="break-word mb-2">{{photo.description}}</p>
+        </div>
+        <div class="row mb-2">
+          <div class="col-10 d-inline-block">
+            <small>
+              <p class="mb-0">{{photo.created | date:'medium'}}</p>
+            </small>
+          </div>
+
+          <div #nodePai class="col-1 d-inline-block text-md-end">
+            <div photoOwnerOnly [ownedPhoto]="photo" [nodePai]="nodePai">
+              <a class="nav-link pt-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Edit</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><button type="button" class="dropdown-item pe-auto" data-bs-toggle="modal" data-bs-target="#deletePhotoModal">Delete</button></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        <ap-photo [url]="photo.url" [description]="photo.description"></ap-photo>
+        <div class="text-center mt-2">
+          <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2"></i>{{ photo.likes || 0 }}
+          <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2 ml-2"></i>{{ photo.numberOfComments || 0 }}
+        </div>
+
+        <!-- <div class="w-25 d-inline-block">
+          <div class="accordion d-inline-block" id="accordionExample">
+            <div class="accordion-item d-inline-block">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Accordion Item #1
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+        </div> -->
+      </div>
+
+      <div class="col-md-6 col-12 pr-5 pl-5">
+
+        <div class="mt-4">
+          <h4 class="text-center">Comments</h4>
+          <hr>
+          <div *ngIf="photo.allowComments; else commentsNotAllowed">
+            <ap-photo-comment [photoId]="photoId"></ap-photo-comment>
+          </div>
+
+          <ng-template #commentsNotAllowed>
+            <p class="text-center text-danger">Comments not allowed</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deletePhotoModal" tabindex="-1" aria-labelledby="deletePhotoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deletePhotoModalLabel" class="text-danger">Delete photo?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want delete this photo?
+        <br>
+        This action cannot be undone
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deletePhoto()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

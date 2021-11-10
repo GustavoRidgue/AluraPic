@@ -1,0 +1,37 @@
+<footer class="mt-5" *ngIf="user; else notAuthenticated">
+  <div class="fixed-bottom bg-white p-1">
+      <div class="container">
+          <div class="row text-center">
+              <div class="col-6">
+                  <a [routerLink]="['photos']">
+                      <i class="fa fa-home fa-2x"></i>
+                  </a>
+              </div>
+              <div class="col-6">
+                  <a [routerLink]="['photo', 'add']">
+                      <i class="fa fa-plus-circle fa-2x"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
+
+<ng-template #notAuthenticated>
+  <footer class="mt-5">
+    <div class="fixed-bottom bg-white p-1">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                  <p class="pt-3">
+                    <a [routerLink]="['auth']">Sign In</a>
+                    or
+                    <a [routerLink]="['auth/signup']">Sign Up</a>
+                    to get a better experience!
+                  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </footer>
+</ng-template>

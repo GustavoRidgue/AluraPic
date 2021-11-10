@@ -1,0 +1,89 @@
+<div class="conteiner">
+  <div class="row mr-0 ml-0 justify-content-center">
+    <div class="col-0 col-md-5">
+      <ap-hearder></ap-hearder>
+    </div>
+    <div class="col-10 col-md-6 pr-0 pl-0 pt-3">
+      <h2 class="text-center introduction">Welcome to a new world!</h2>
+      <form [formGroup]="signupForm" class="form mt-4" (submit)="signup()">
+        <div class="row justify-content-center">
+          <div class="form-group pr-0 pl-0 col-10">
+            <input formControlName="email"  placeholder="email" class="form-control" autofocus >
+
+            <small *ngIf="signupForm.get('email').errors?.required"
+              class="text-danger d-block mt-2">
+              * Email is required!
+            </small>
+
+            <small *ngIf="signupForm.get('email').errors?.email"
+              class="text-danger d-block mt-2">
+              * Invalid email!
+            </small>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="form-group pr-0 pl-0 col-10">
+            <input formControlName="username" placeholder="user name" class="form-control">
+
+            <small *ngIf="signupForm.get('username').errors?.required"
+              class="text-danger d-block mt-2">
+              * User Name is required!
+            </small>
+
+            <small *ngIf="signupForm.get('username').errors?.pattern"
+              class="text-danger d-block mt-2">
+              * Cannot contain a number, special character or an uppercase character at the beginning!
+            </small>
+
+            <small *ngIf="signupForm.get('username').errors?.minlength"
+              class="text-danger d-block mt-2">
+              * Username must have at least 5 characters!
+            </small>
+
+            <small *ngIf="signupForm.get('username').errors?.maxlength"
+              class="text-danger d-block mt-2">
+              * Username must have at max 30 characters!
+            </small>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="form-group pr-0 pl-0 col-10">
+            <input formControlName="password" type="password" placeholder="password" class="form-control">
+
+            <small *ngIf="signupForm.get('password').errors?.required"
+              class="text-danger d-block mt-2">
+              * Password is required!
+            </small>
+
+            <small *ngIf="signupForm.get('password').errors?.pattern"
+              class="text-danger d-block mt-2">
+              * Invalid Password!
+            </small>
+
+            <small *ngIf="signupForm.get('password').errors?.minlength"
+              class="text-danger d-block mt-2">
+              * Username must have at least 6 characters!
+            </small>
+
+            <small *ngIf="signupForm.get('password').errors?.maxlength"
+              class="text-danger d-block mt-2">
+              * Username must have at max 16 characters!
+            </small>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+          <div class="col-8 col-md-6">
+            <button class="btn btn-primary btn-block" [disabled]="signupForm.invalid || signupForm.pending" type="submit">Register</button>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+          <p>Already a user?<a [routerLink]="['/auth']"> Sign In!</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

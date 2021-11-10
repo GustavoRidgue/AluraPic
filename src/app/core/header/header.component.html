@@ -1,0 +1,42 @@
+<header class="fixed-top">
+  <nav class="navbar navbar-light bg-white">
+      <a class="navbar-brand" href="http://localhost:4200/photos">ALURAPIC</a>
+
+      <div *ngIf="user; else login">
+        <i class="fa fa-user-circle"></i>
+        <a class="ml-2 mr-2 text-dark" [routerLink]="['photos/user/' + user.id]">{{user.username}}</a>
+        <button type="button" class="btn btn-link pt-0 text-dark" data-bs-toggle="modal" data-bs-target="#logoutModal">
+          Logout
+        </button>
+      </div>
+
+      <ng-template #login>
+          <a [routerLink]="['/auth']" class="btn btn-primary">
+              Login
+          </a>
+      </ng-template>
+
+  </nav>
+</header>
+
+<!-- Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel" class="text-danger">Log out</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Navigate logged to get a better experience!
+        <br>
+        Are you sure you want logout?
+        If so, you'll be redirected to the sign in page.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+{
+  "pictures": [
+    {
+      "url":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Sultan_the_Barbary_Lion.jpg/440px-Sultan_the_Barbary_Lion.jpg",
+      "description":"leao"
+    },
+    {
+      "url":"https://i.ytimg.com/vi/jrIivkIhbaY/maxresdefault.jpg",
+      "description":"maritaca"
+    },
+    {
+      "userId": 1,
+      "url":"https://www.petz.com.br/blog/wp-content/uploads/2017/09/periquito-02-1280x720.jpg",
+      "description":"periquito"
+    },
+    {
+      "userId": 1,
+      "url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVN5K_liCFw2_WSGjpe8KrRlkY0ubtn561Ow&usqp=CAU",
+      "description":"canario do reino"
+    },
+    {
+      "userId": 2,
+      "url": "https://i.ytimg.com/vi/TYMAB7nKtOs/maxresdefault.jpg",
+      "description": "ben te vi"
+    },
+    {
+      "url": "https://s3.amazonaws.com/media.wikiaves.com.br/images/0802/2080539_55ea38441c551772bcd6457104460e90.jpg",
+      "description": "passaro preto"
+    },
+    {
+      "userId": 2,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa9CEDkwrORYlPjOm-dYLGA63HOjF0AcM5Zw&usqp=CAU",
+      "description": "canario do reino femea"
+    },
+    {
+      "userId": 2,
+      "url": "https://blog.pescagerais.com.br/wp-content/uploads/2021/02/peixe-palhaco-procurando-nemo.jpg",
+      "description": "peixe palhaco"
+    }
+  ],
+
+  "user": [
+    {
+      "id": 1,
+      "username":"gustavo",
+      "password": "gubimapa"
+    },
+    {
+      "id": 2,
+      "username":"gabriel",
+      "password": "bigumapa"
+    },
+    {
+      "id": 3,
+      "username":"teste",
+      "password": "123"
+    }
+  ]
+}

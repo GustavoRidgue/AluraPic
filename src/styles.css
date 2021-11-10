@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.break-word {
+  word-break: break-all;
+}
+
+.comment-list {
+  height: 50vh;
+  overflow-y: auto;
+}
