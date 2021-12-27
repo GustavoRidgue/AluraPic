@@ -38,10 +38,17 @@ export class PhotoCommentComponent implements OnInit{
   }
 
   save() {
-    const comment = this.commentForm.get('comment').value as string;
+    // const comment = this.commentForm.get('comment').value as string;
+    const comment = this.commentForm.get('comment').value;
+
+    const commentNoLeftSpace = comment.trimLeft();
+    const commentNoSideSpace = commentNoLeftSpace.trimRight();
+    const newComment = commentNoSideSpace;
+
+    console.log(newComment);
 
     this.comments$ = this.photoService
-      .addComment(comment, this.photoId, this.user)
+      .addComment(newComment, this.photoId, this.user)
       .pipe(
         switchMap(
           () => this.photoService.getComments(this.photoId)
@@ -52,5 +59,15 @@ export class PhotoCommentComponent implements OnInit{
           () => this.commentForm.reset()
         )
       )
+  }
+
+  keyEnterSubmit(event) {
+    if (event.keyCode === 13) {
+      try {
+        this.save();
+      } catch (e) {
+        alert('Sorry, something went wrong.');
+      }
+    }
   }
 }

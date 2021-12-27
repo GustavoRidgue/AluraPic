@@ -6,7 +6,6 @@ import { PhotoService } from './../photo/photo.service';
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Photo } from '../photo/photo';
-import { PhotoComment } from '../photo/photo.comment';
 
 @Component({
     templateUrl: './photo-details.component.html',

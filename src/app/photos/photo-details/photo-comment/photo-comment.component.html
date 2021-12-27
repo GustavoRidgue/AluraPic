@@ -1,6 +1,6 @@
 <div *ngIf="(comments$ | async) as comments">
   <div *ngIf="user">
-    <form [formGroup]="commentForm" (submit)="save()" class="mb-3">
+    <form [formGroup]="commentForm" (submit)="save()" class="mb-3" (keydown)="keyEnterSubmit($event)" id="commentForm">
       <div class="input-group">
         <textarea formControlName="comment" class="form-control" placeholder="Type your comment..."></textarea>
         <div class="input-group-append">
