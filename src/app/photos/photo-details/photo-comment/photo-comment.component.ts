@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { UserService } from './../../../user/user.service';
 import { User } from './../../../user/user';
 import { PhotoService } from './../../photo/photo.service';
@@ -13,6 +14,7 @@ import { switchMap, tap } from 'rxjs/operators';
 })
 export class PhotoCommentComponent implements OnInit{
   @Input() photoId: number;
+  commentId: number;
   user: User;
   comments$: Observable<PhotoComment[]>;
 
@@ -45,8 +47,6 @@ export class PhotoCommentComponent implements OnInit{
     const commentNoSideSpace = commentNoLeftSpace.trimRight();
     const newComment = commentNoSideSpace;
 
-    console.log(newComment);
-
     this.comments$ = this.photoService
       .addComment(newComment, this.photoId, this.user)
       .pipe(
@@ -69,5 +69,33 @@ export class PhotoCommentComponent implements OnInit{
         alert('Sorry, something went wrong.');
       }
     }
+  }
+
+  changeCommentId(id) {
+    if (id != null) this.commentId = id;
+  }
+
+  deleteComment(userId: number,
+                photoId: number) {
+    const photoCommentId = this.commentId;
+
+    // this.photoService.deleteComment(userId, photoId, photoCommentId)
+    // .subscribe(
+    //   () => {
+    //     console.log('deleted');
+    //   }
+    // )
+
+    this.comments$ = this.photoService.deleteComment(userId, photoId, photoCommentId)
+    .pipe(
+      switchMap(
+        () => this.photoService.getComments(this.photoId)
+      )
+    )
+    .pipe(
+      tap(
+        () => console.log('deleted tap')
+      )
+    )
   }
 }

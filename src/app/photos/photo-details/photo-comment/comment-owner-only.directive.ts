@@ -1,14 +1,15 @@
-import { User } from './../../../user/user';
+import { PhotoComment } from '../../photo/photo.comment';
+import { User } from '../../../user/user';
 import { Renderer, OnInit, Renderer2, ViewChildren, ElementRef } from '@angular/core';
-import { Photo } from './../../photo/photo';
+import { Photo } from '../../photo/photo';
 import { Directive, Input } from '@angular/core';
 import { UserService } from 'src/app/user/user.service';
 
 @Directive({
-  selector: '[photoOwnerOnly]'
+  selector: '[commentOwnerOnly]'
 })
-export class PhotoOwnerOnlyDirective implements OnInit {
-  @Input() ownedPhoto: Photo;
+export class CommentOwnerOnlyDirective implements OnInit {
+  @Input() ownedComment: PhotoComment;
   @Input() nodePai;
 
   user: User;
@@ -22,7 +23,7 @@ export class PhotoOwnerOnlyDirective implements OnInit {
   ngOnInit(): void {
     this.user = this.userService.getUser();
 
-    if (!this.user || this.user.id != this.ownedPhoto.user.id) {
+    if (!this.user || this.user.id != this.ownedComment.user.id) {
       this.renderer.removeChild(this.nodePai, this.element.nativeElement);
     }
   }

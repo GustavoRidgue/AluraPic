@@ -28,9 +28,23 @@
         <small>{{ comment.posted | date:'dd-MM-yyyy HH:mm' }}</small>
       </em>
       <div class="break-word">
-        <p class="text-break mb-2">
+        <p class="text-break mb-0">
           {{ comment.comment }}
         </p>
+      </div>
+      <div #nodePai class="mb-2">
+        <!-- <em photoOwnerOnly [ownedPhoto]="comment" [nodePai]="nodePai">
+          <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalCenter">
+            Launch demo modal
+          </button>
+          <small data-toggle="modal" data-target="#exampleModalCenter">Excluir</small>
+        </em> -->
+        <div commentOwnerOnly [ownedComment]="comment" [nodePai]="nodePai">
+          <small class="" data-bs-toggle="modal" data-bs-target="#deleteCommentModal">
+            <!-- <input type="hidden" name="commentId" [value]="comment.id"> -->
+            <p class="mb-0 link-danger text-decoration-underline" style="cursor: pointer;" (click)="changeCommentId(comment.id)">Excluir</p>
+          </small>
+        </div>
       </div>
     </li>
   </ul>
@@ -42,3 +56,21 @@
   </ng-template>
   </div>
 <div>
+
+<div class="modal fade" id="deleteCommentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Delete comment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete the comment permanently?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="deleteComment(user.id, photoId, 1)" data-bs-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Photo } from './photo';
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { User } from 'src/app/user/user';
 import { PhotoComment } from './photo.comment';
@@ -56,6 +56,20 @@ export class PhotoService {
   addComment(comment: string, photoId: number, user: User) {
     return this.http.post(
       API + '/comment', {comment, photoId, user}
+    );
+  }
+
+  deleteComment(userId: number, photoId: number, photoCommentId: number) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body:  {userId, photoId, photoCommentId}
+    };
+
+
+    return this.http.delete(
+      API + '/comment/delete', options
     );
   }
 
