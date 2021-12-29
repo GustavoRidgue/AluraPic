@@ -73,6 +73,26 @@ export class PhotoService {
     );
   }
 
+  like(userId: number, photoId: number) {
+    return this.http.post(
+      API + '/like', {userId, photoId}
+    );
+  }
+
+  dislike(userId: number, photoId: number) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body:  {userId, photoId}
+    };
+
+
+    return this.http.delete(
+      API + '/dislike', options
+    );
+  }
+
   deletePhoto(photoId: number) {
     return this.http.delete(API + '/delete/' + photoId);
   }

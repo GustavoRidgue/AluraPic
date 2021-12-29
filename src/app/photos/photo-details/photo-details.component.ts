@@ -6,6 +6,7 @@ import { PhotoService } from './../photo/photo.service';
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Photo } from '../photo/photo';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
     templateUrl: './photo-details.component.html',
@@ -34,6 +35,34 @@ export class PhotoDetailsComponent implements OnInit {
         this.router.navigateByUrl('/photos');
       }
     )
+  }
+
+  likePhoto() {
+    this.photo$ = this.photoService.like(this.user.id, this.photoId)
+    .pipe(
+      switchMap(
+        () => this.photoService.findById(this.photoId)
+      )
+    )
+    // .pipe(
+    //   tap(
+    //     () => myAlert('You liked this photo')
+    //   )
+    // )
+  }
+
+  dislikePhoto() {
+    this.photo$ = this.photoService.dislike(this.user.id, this.photoId)
+    .pipe(
+      switchMap(
+        () => this.photoService.findById(this.photoId)
+      )
+    )
+    // .pipe(
+    //   tap(
+    //     () => myAlert('You liked this photo')
+    //   )
+    // )
   }
 
   // hasComments() {

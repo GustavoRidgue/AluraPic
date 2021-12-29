@@ -31,9 +31,18 @@
 
         </div>
         <ap-photo [url]="photo.url" [description]="photo.description"></ap-photo>
-        <div class="text-center mt-2">
-          <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2"></i>{{ photo.likes || 0 }}
-          <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2 ml-2"></i>{{ photo.numberOfComments || 0 }}
+
+        <div [ngSwitch]="photo.usersIdLiked.indexOf(user.id)" class="text-center mt-2">
+          <div *ngSwitchCase="-1">
+            <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2" (click)="likePhoto()"></i>{{ photo.numberOfLikes || 0 }}
+            <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2 ml-2"></i>{{ photo.numberOfComments || 0 }}
+            like
+          </div>
+          <div *ngSwitchDefault>
+            <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2 text-primary" (click)="dislikePhoto()"></i>{{ photo.numberOfLikes || 0 }}
+            <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2 ml-2"></i>{{ photo.numberOfComments || 0 }}
+            dislike
+          </div>
         </div>
 
         <!-- <div class="w-25 d-inline-block">

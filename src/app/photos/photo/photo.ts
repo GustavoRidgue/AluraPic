@@ -6,7 +6,8 @@ export interface Photo {
   description: string;
   allowComments: boolean;
   created: Date;
-  likes: number;
   numberOfComments: number;
   comments: string[];
+  numberOfLikes: number;
+  usersIdLiked: number[];
 }

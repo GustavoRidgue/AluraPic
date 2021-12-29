@@ -86,16 +86,16 @@ export class PhotoCommentComponent implements OnInit{
     //   }
     // )
 
-    this.comments$ = this.photoService.deleteComment(userId, photoId, photoCommentId)
-    .pipe(
-      switchMap(
-        () => this.photoService.getComments(this.photoId)
+    try {
+      this.comments$ = this.photoService.deleteComment(userId, photoId, photoCommentId)
+      .pipe(
+        switchMap(
+          () => this.photoService.getComments(this.photoId)
+        )
       )
-    )
-    .pipe(
-      tap(
-        () => console.log('deleted tap')
-      )
-    )
+    } catch (e) {
+      alert('Sorry, try it later');
+    }
+
   }
 }
