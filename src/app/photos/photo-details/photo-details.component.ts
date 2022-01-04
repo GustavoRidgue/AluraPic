@@ -29,7 +29,7 @@ export class PhotoDetailsComponent implements OnInit {
   }
 
   deletePhoto() {
-    this.photoService.deletePhoto(this.photoId)
+    this.photoService.deletePhoto(this.user, this.photoId)
     .subscribe(
       () => {
         this.router.navigateByUrl('/photos');

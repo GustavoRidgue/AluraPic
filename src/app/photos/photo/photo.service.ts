@@ -1,7 +1,7 @@
+import { User } from './../../user/user';
 import { Photo } from './photo';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { User } from 'src/app/user/user';
 import { PhotoComment } from './photo.comment';
 
 // const API = 'http://localhost:3000';
@@ -93,8 +93,15 @@ export class PhotoService {
     );
   }
 
-  deletePhoto(photoId: number) {
-    return this.http.delete(API + '/delete/' + photoId);
+  deletePhoto(user: User, photoId: number) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body:  {user, photoId}
+    };
+
+    return this.http.delete(API + '/delete', options);
   }
 }
 
