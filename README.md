@@ -19,9 +19,9 @@ See all photos, or see photos of that user. Browse logged in for a better experi
 The project is still under development and future updates will focus on the following tasks:
 
 - [ ] Edit photo
-- [ ] Better securance
+- [ ] Better navigation
 - [ ] Notifications
-- [ ] Better Pop-ups
+- [ ] Delete account
 - [ ] Deploy realese
 
 ## Download
