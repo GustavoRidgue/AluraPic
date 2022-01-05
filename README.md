@@ -12,7 +12,7 @@
 See all photos, or see photos of that user. Browse logged in for a better experience.
 
 ## API consumed for data:
-[![card](https://github-readme-stats.vercel.app/api/pin/?username=GustavoRidgue&repo=AluraPic-API)](https://github.com/iuricode/)
+[![card](https://github-readme-stats.vercel.app/api/pin/?username=GustavoRidgue&repo=AluraPic-API)](https://github.com/GustavoRidgue/AluraPic-API)
 
 ### Adjustments and improvements
 
