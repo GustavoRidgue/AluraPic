@@ -11,6 +11,9 @@
 > Project that simulates a social network of images. Still with little functionality, you can like, comment, delete and create a photo.
 See all photos, or see photos of that user. Browse logged in for a better experience.
 
+## API consumed for data:
+[![card](https://github-readme-stats.vercel.app/api/pin/?username=GustavoRidgue&repo=AluraPic-API)](https://github.com/iuricode/)
+
 ### Adjustments and improvements
 
 The project is still under development and future updates will focus on the following tasks:
