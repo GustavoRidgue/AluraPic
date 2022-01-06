@@ -59,17 +59,17 @@
 
             <small *ngIf="signupForm.get('password').errors?.pattern"
               class="text-danger d-block mt-2">
-              * Invalid Password!
+              * Invalid password!
             </small>
 
             <small *ngIf="signupForm.get('password').errors?.minlength"
               class="text-danger d-block mt-2">
-              * Username must have at least 6 characters!
+              * Password must have at least 6 characters!
             </small>
 
             <small *ngIf="signupForm.get('password').errors?.maxlength"
               class="text-danger d-block mt-2">
-              * Username must have at max 16 characters!
+              * Password must have at max 14 characters!
             </small>
           </div>
         </div>

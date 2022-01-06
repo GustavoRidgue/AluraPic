@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
         [
           Validators.required,
           Validators.pattern(/^[a-z]+[0-9]*$/),
-          Validators.minLength(5),
+          Validators.minLength(6),
           Validators.maxLength(30)
         ]
       ],
@@ -38,8 +38,8 @@ export class SignupComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(16)
+          Validators.minLength(6),
+          Validators.maxLength(14)
         ]
       ]
     })
